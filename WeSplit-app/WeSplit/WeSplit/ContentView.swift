@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var name = ""
+
     var body: some View {
-        Text("Olá, mundo!")
-            .padding()
-    } 
+        Form {
+            TextField("Enter your name", text: $name)
+            Text("Your name is \(name)")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
