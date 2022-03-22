@@ -15,22 +15,30 @@ struct ContentView: View {
 
     let tipPercentages = [10, 15, 20, 25, 0]
 
+    var tipValue: Double {
+        let tipSelection = Double(tipPercentage)
+        return checkAmount / 100 * tipSelection
+    }
+
+    var totalAmount: Double {
+        checkAmount + tipValue
+    }
+
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
-        let tipSelection = Double(tipPercentage)
-
-        let tipValue = checkAmount / 100 * tipSelection
         let grandTotal = checkAmount + tipValue
         let amountPerPerson = grandTotal / peopleCount
 
         return amountPerPerson
     }
 
+    let userCurrency = Locale.current.currencyCode ?? "USD"
+
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: .currency(code: userCurrency))
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
 
@@ -53,14 +61,22 @@ struct ContentView: View {
                 }
 
                 Section {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text(totalAmount, format: .currency(code: userCurrency))
+                } header: {
+                    Text("Amount total")
+                }
+
+                Section {
+                    Text(totalPerPerson, format: .currency(code: userCurrency))
+                } header: {
+                    Text("Amount per person")
                 }
             }
             .navigationTitle("WeSplit")
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    
+
                     Button("Done") {
                         amountIsFocused = false
                     }
