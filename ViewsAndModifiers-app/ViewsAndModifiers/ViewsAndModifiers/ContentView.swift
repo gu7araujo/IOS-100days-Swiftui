@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var useRedText = false
+    var motto1: some View {
+        Text("Draco dormiens")
+    }
+
+    let motto2 = Text("nunquam titillandus")
+
+    @ViewBuilder var spells: some View {
+        VStack {
+            Text("Lumos")
+            Text("Obliviate")
+        }
+    }
 
     var body: some View {
-        Button("Hello World") {
-            useRedText.toggle()
-        }
-        .foregroundColor(useRedText ? .red : .blue)
+        spells
     }
 }
 
