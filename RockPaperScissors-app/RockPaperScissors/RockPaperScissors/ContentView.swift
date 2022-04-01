@@ -14,7 +14,11 @@ struct Symbol: View {
     var body: some View {
         VStack {
             Image(systemName: systemName)
+                .foregroundColor(.white)
+                .font(.largeTitle)
             Text(text)
+                .foregroundColor(.white)
+                .font(.subheadline)
         }
     }
 }
@@ -32,12 +36,16 @@ struct ContentView: View {
     @State private var showingScore = false
 
     var body: some View {
-        VStack {
-            Symbol(systemName: systemNameSymbols[machineChoice], text: possibleMoves[machineChoice])
+        ZStack {
+            Color(red: 28/255, green: 38/255, blue: 70/255).ignoresSafeArea()
+            VStack {
+                Spacer()
+                Symbol(systemName: systemNameSymbols[machineChoice], text: possibleMoves[machineChoice])
 
-            Text(shouldWin ? "Win" : "Lost")
+                Text(shouldWin ? "Win" : "Lost")
+                    .foregroundColor(.white)
+                    .font(.largeTitle.weight(.bold))
 
-            HStack {
                 ForEach(possibleMoves, id: \.self) { move in
                     Button {
                         moveTapped(move)
@@ -45,10 +53,15 @@ struct ContentView: View {
                         let index = possibleMoves.firstIndex(of: move) ?? -1
                         Symbol(systemName: systemNameSymbols[index], text: move)
                     }
+                    .buttonStyle(.bordered)
                 }
-            }
 
-            Text("Score \(scoreValue)")
+                Spacer()
+                Text("Score \(scoreValue)")
+                    .foregroundColor(.white)
+                    .font(.largeTitle.weight(.semibold))
+                    .padding()
+            }
         }
         .alert("End of the Game", isPresented: $showingScore) {
             Button("Reset Game", action: reset)
