@@ -35,18 +35,15 @@ struct ContentView: View {
         VStack {
             Symbol(systemName: systemNameSymbols[machineChoice], text: possibleMoves[machineChoice])
 
-            if shouldWin {
-                Text("Win")
-            } else {
-                Text("Lost")
-            }
+            Text(shouldWin ? "Win" : "Lost")
 
             HStack {
                 ForEach(possibleMoves, id: \.self) { move in
                     Button {
                         moveTapped(move)
                     } label: {
-                        Symbol(systemName: systemNameSymbols[possibleMoves.firstIndex(of: move)!], text: move)
+                        let index = possibleMoves.firstIndex(of: move) ?? -1
+                        Symbol(systemName: systemNameSymbols[index], text: move)
                     }
                 }
             }
