@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
-    @State private var coffeeAmount = 1
+    @State private var coffeeAmount = 0
 
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -27,7 +27,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("When do you want to wake up?")
                         .font(.headline)
 
@@ -35,18 +35,19 @@ struct ContentView: View {
                         .labelsHidden()
                 }
 
-                VStack(alignment: .leading, spacing: 0) {
+                Section {
                     Text("Desired amount of sleep")
                         .font(.headline)
 
                     Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, step: 0.25)
                 }
 
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Daily coffee intake")
-                        .font(.headline)
-                    
-                    Stepper(coffeeAmount == 1 ? "1 cup" : "\(coffeeAmount) cups", value: $coffeeAmount, in: 1...20)
+                Section {
+                    Picker("Daily coffee intake", selection: $coffeeAmount) {
+                        ForEach(1..<21) {
+                            Text("\($0)")
+                        }
+                    }
                 }
             }
             .navigationTitle("BetterRest")
