@@ -13,7 +13,6 @@ Guess The Flag
 <div style="text-align: center;">
   <img src="./GuessTheFlag-app/Screenshots/GuessTheFlag-1.png" width="300px"/>
   <img src="./GuessTheFlag-app/Screenshots/GuessTheFlag-2.png" width="300px"/>
-  <img src="./GuessTheFlag-app/Screenshots/GuessTheFlag-4.png" width="300px"/>
 </div>
 
 <br/>
@@ -28,4 +27,13 @@ Rock Paper Scissors
 BetterRest
 <div style="text-align: center;">
   <img src="./BetterRest-app/Screenshots/BetterRest-1.png" width="300px"/>
+  <img src="./BetterRest-app/Screenshots/BetterRest-2.png" width="300px"/>
+</div>
+
+<br/>
+
+WordScramble
+<div style="text-align: center;">
+  <img src="./WordScramble-app/Screenshots/WordScramble-1.png" width="300px"/>
+  <img src="./WordScramble-app/Screenshots/WordScramble-2.png" width="300px"/>
 </div>
