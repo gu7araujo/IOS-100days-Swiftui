@@ -33,6 +33,9 @@ struct ContentView: View {
                     }
                 }
             }
+            .toolbar {
+                Button("Start Game", action: startGame)
+            }
             .navigationTitle(rootWord)
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
@@ -81,6 +84,7 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                usedWords = []
                 return
             }
         }
@@ -90,7 +94,8 @@ struct ContentView: View {
 
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
+        guard answer.count > 2 else { return }
+        guard answer != rootWord else { return }
 
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original!")
