@@ -37,3 +37,10 @@ WordScramble
   <img src="./WordScramble-app/Screenshots/WordScramble-1.png" width="300px"/>
   <img src="./WordScramble-app/Screenshots/WordScramble-2.png" width="300px"/>
 </div>
+
+<br/>
+
+Animation
+<div style="text-align: center;">
+  <img src="./Animations-app/Screenshots/Animation-1.png" width="300px"/>
+</div>
