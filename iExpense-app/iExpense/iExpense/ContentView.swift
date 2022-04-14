@@ -7,20 +7,24 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName = "Gustavo"
-    @Published var lastName = "Santos"
+struct SecondView: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        Button("dismiss") {
+            dismiss()
+        }
+    }
 }
 
 struct ContentView: View {
-    @StateObject var user = User()
+    @State private var showingSecondView = false
 
     var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName)")
-
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+        Button("Show second view") {
+            showingSecondView.toggle()
+        }.sheet(isPresented: $showingSecondView) {
+            SecondView()
         }
     }
 }
