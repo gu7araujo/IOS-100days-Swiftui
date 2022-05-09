@@ -51,3 +51,10 @@ Moonshot
 <div style="text-align: center;">
   <img src="./Moonshot-app/Screenshots/Moonshot-1.gif" width="300px"/>
 </div>
+
+<br/>
+
+CupcakeCorner
+<div style="text-align: center;">
+  <img src="./CupcakeCorner-app/Screenshots/CupcakeCorner.gif" width="300px"/>
+</div>
