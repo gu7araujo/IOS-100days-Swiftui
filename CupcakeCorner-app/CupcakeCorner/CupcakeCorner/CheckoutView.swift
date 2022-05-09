@@ -10,8 +10,8 @@ import SwiftUI
 struct CheckoutView: View {
     @ObservedObject var order: Order
 
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @State private var Message = ""
+    @State private var showingMessage = false
 
     var body: some View {
         ScrollView {
@@ -38,10 +38,10 @@ struct CheckoutView: View {
         }
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Thank you!", isPresented: $showingConfirmation) {
+        .alert("Info", isPresented: $showingMessage) {
             Button("OK") { }
         } message: {
-            Text(confirmationMessage)
+            Text(Message)
         }
     }
 
@@ -60,11 +60,12 @@ struct CheckoutView: View {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
 
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+            Message = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
 
-            showingConfirmation = true
+            showingMessage = true
         } catch {
-            print("Checkout failed.")
+            Message = "Error Processing Order, Try again..."
+            showingMessage = true
         }
     }
 }

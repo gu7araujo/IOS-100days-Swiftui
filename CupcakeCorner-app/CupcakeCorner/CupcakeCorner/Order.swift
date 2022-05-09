@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Order: ObservableObject, Codable {
     enum CodingKeys: CodingKey {
@@ -35,11 +36,25 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
 
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        var isValid = true
+        guard let regex = try? NSRegularExpression(pattern: "[a-zA-Z]") else {
             return false
         }
 
-        return true
+        let attributes = [name, streetAddress, city]
+
+        for attribute in attributes {
+            let range = NSRange(location: 0, length: attribute.utf16.count)
+            if regex.firstMatch(in: attribute, options: [], range: range) == nil {
+                isValid = false
+            }
+        }
+
+        if zip.isEmpty {
+            isValid = false
+        }
+
+        return isValid
     }
 
     var cost: Double {
