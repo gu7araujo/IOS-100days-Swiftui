@@ -58,3 +58,10 @@ CupcakeCorner
 <div style="text-align: center;">
   <img src="./CupcakeCorner-app/Screenshots/CupcakeCorner.gif" width="300px"/>
 </div>
+
+<br/>
+
+Bookworm
+<div style="text-align: center;">
+  <img src="./Bookworm-app/Screenshots/Bookworm.gif" width="300px"/>
+</div>
