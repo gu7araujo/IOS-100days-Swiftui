@@ -65,3 +65,10 @@ Bookworm
 <div style="text-align: center;">
   <img src="./Bookworm-app/Screenshots/Bookworm.gif" width="300px"/>
 </div>
+
+<br/>
+
+Instafilter
+<div style="text-align: center;">
+  <img src="./Instafilter-app/Screenshots/Instafilter.gif" width="300px"/>
+</div>
