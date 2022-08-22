@@ -72,3 +72,10 @@ Instafilter
 <div style="text-align: center;">
   <img src="./Instafilter-app/Screenshots/Instafilter.gif" width="300px"/>
 </div>
+
+<br/>
+
+BucketList
+<div style="text-align: center;">
+  <img src="./BucketList-app/Screenshots/BucketList.gif" width="300px"/>
+</div>
